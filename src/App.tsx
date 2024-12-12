@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IProject } from "./models/Project";
 import ProjectForm from "./components/ProjectForm/ProjectForm";
 import ProjectDetails from "./components/ProjectDetails/ProjectDetails";
-import {  Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 export default function App() {
@@ -30,7 +30,7 @@ export default function App() {
         />
         <Route
           path="/projects"
-          element={<ProjectDetails project={project} />}
+          element={<ProjectDetails project={project} setProject={setProject} />}
         />
       </Routes>
     </main>
