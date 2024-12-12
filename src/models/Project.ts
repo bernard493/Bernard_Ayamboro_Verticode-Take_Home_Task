@@ -1,6 +1,6 @@
 export interface IProject {
     projectName: string;
     description: string;
-    startDate: Date;
+    startDate: string;
     status: "Not Started" | "In Progress" | "Completed";
 }
