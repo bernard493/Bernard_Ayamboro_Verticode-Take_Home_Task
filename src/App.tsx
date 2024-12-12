@@ -18,6 +18,17 @@ export default function App() {
     navigate("/projects");
   };
 
+  const handleUpdateProjectStatus = (
+    newStatus: "Not Started" | "In Progress" | "Completed"
+  ) => {
+    setProject({
+      projectName: project?.projectName || "",
+      description: project?.description || "",
+      startDate: project?.startDate || "",
+      status: newStatus,
+    });
+  };
+
   return (
     <main className="flex flex-col">
       <header className="flex h-24 bg-light-green">
@@ -30,7 +41,12 @@ export default function App() {
         />
         <Route
           path="/projects"
-          element={<ProjectDetails project={project} setProject={setProject} />}
+          element={
+            <ProjectDetails
+              project={project}
+              handleUpdateProjectStatus={handleUpdateProjectStatus}
+            />
+          }
         />
       </Routes>
     </main>
