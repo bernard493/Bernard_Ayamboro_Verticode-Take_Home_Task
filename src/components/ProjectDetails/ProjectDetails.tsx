@@ -44,9 +44,9 @@ const ProjectDetails: React.FC<Props> = ({
               <div className="flex min-w-0 gap-x-4">
                 <div className="min-w-0 flex-auto">
                   <p className="text-sm/6 font-semibold text-gray-900">
-                    {project.description}
+                    {project.projectName}
                   </p>
-                  <p className="mt-1 truncate text-xs/5 text-gray-500">
+                  <p className="mt-1  text-xs/5 text-gray-500">
                     {project.description}
                   </p>
                 </div>
@@ -54,7 +54,7 @@ const ProjectDetails: React.FC<Props> = ({
               <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
                 <p className="text-sm/6 text-gray-900">{formattedDate}</p>
 
-                <Menu as="div" className="relative inline-block text-left mt-3">
+                <Menu as="div" className="inline-block text-left mt-3">
                   <div>
                     <MenuButton
                       className={`inline-flex w-full justify-center items-center align-bottom gap-x-1.5 rounded-md ${
