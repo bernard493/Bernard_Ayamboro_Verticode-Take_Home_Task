@@ -1,16 +1,15 @@
 import React from "react";
-import { IProject } from "../../models/Project";
+import { IProject, ProjectStatusType } from "../../models/Project";
 import { useNavigate } from "react-router";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 interface Props {
   project: IProject | null;
-  handleUpdateProjectStatus: (
-    newStatus: "Not Started" | "In Progress" | "Completed"
-  ) => void;
+  handleUpdateProjectStatus: (newStatus: ProjectStatusType) => void;
 }
 
+// list of project status
 const projectsStatus: string[] = ["Not Started", "In Progress", "Completed"];
 
 const ProjectDetails: React.FC<Props> = ({
@@ -35,7 +34,7 @@ const ProjectDetails: React.FC<Props> = ({
             onClick={() => navigate("/")}
             className="rounded-md bg-[#133A30] px-10 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#29816b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Add New
+            Add New Project
           </button>
         </div>
         {project ? (
@@ -54,7 +53,7 @@ const ProjectDetails: React.FC<Props> = ({
               <div className="shrink-0 sm:flex sm:flex-col sm:items-end">
                 <p className="text-sm/6 text-gray-900">{formattedDate}</p>
 
-                <Menu as="div" className="inline-block text-left mt-3">
+                <Menu as="div" className="relative inline-block text-left mt-3">
                   <div>
                     <MenuButton
                       className={`inline-flex w-full justify-center items-center align-bottom gap-x-1.5 rounded-md ${
@@ -107,10 +106,7 @@ const ProjectDetails: React.FC<Props> = ({
                             <button
                               onClick={() =>
                                 handleUpdateProjectStatus(
-                                  status as
-                                    | "Not Started"
-                                    | "In Progress"
-                                    | "Completed"
+                                  status as ProjectStatusType
                                 )
                               }
                               className="block px-2 py-2 text-sm w-full text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
