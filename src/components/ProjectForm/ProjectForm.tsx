@@ -143,6 +143,7 @@ const ProjectForm: React.FC<Props> = ({ handleFormSubmit }) => {
                   </option>
                   <option>Not Started</option>
                   <option>In Progress</option>
+                  <option>Completed</option>
                 </select>
                 <RiArrowDropDownLine
                   aria-hidden="true"
@@ -153,7 +154,6 @@ const ProjectForm: React.FC<Props> = ({ handleFormSubmit }) => {
                 <p className="text-red-500 mt-2">{errors.status.message}</p>
               )}
             </div>
-
             {/* Start Date Picker */}
             <div className="sm:col-span-3">
               <label
@@ -166,7 +166,9 @@ const ProjectForm: React.FC<Props> = ({ handleFormSubmit }) => {
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => {
-                    setStartDate(date);
+                    if (date instanceof Date && !isNaN(date.getTime())) {
+                      setStartDate(date);
+                    }
                   }}
                   dateFormat="MM/dd/yyyy"
                   className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"

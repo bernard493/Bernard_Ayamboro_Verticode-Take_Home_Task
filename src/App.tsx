@@ -24,7 +24,7 @@ export default function App() {
     setProject({
       projectName: project?.projectName || "",
       description: project?.description || "",
-      startDate: project?.startDate || "",
+      startDate: new Date(project?.startDate || ""),
       status: newStatus,
     });
   };
@@ -32,7 +32,7 @@ export default function App() {
   return (
     <main className="flex flex-col">
       <header className="flex h-24 bg-light-green">
-        <img src="/logo.png" height={64} className="h-16 m-auto sm:h-16 " />
+        <img src="/logo.png" height={64} className="h-10 m-auto sm:h-16 " />
       </header>
       <Routes>
         <Route
